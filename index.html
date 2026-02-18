@@ -112,25 +112,6 @@
         .calc-btn.eq{background:var(--accent);color:var(--white);font-weight:700}
         .calc-btn.ac{background:var(--rose-dim);color:var(--white)}
         .calc-btn.span2{grid-column:span 2}
-        .calc-btn.sci{font-size:.82rem;padding:12px 0}
-
-        .sci-toggle{
-            display:flex;gap:8px;margin-bottom:12px;
-        }
-        .sci-toggle button{
-            flex:1;padding:10px;border-radius:var(--radius-sm);
-            border:1px solid var(--border);cursor:pointer;
-            font-family:inherit;font-size:.85rem;font-weight:600;
-            transition:.15s;
-        }
-        .sci-toggle .basic-btn{background:var(--accent-dim);color:var(--white);border-color:var(--accent)}
-        .sci-toggle .sci-btn{background:var(--card);color:var(--text-sec);border-color:var(--border)}
-        .sci-toggle .basic-btn.inactive{background:var(--card);color:var(--text-sec);border-color:var(--border)}
-        .sci-toggle .sci-btn.active-mode{background:var(--accent-dim);color:var(--white);border-color:var(--accent)}
-
-        .sci-pad{
-            display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px;
-        }
 
         /* ---- SHARED FORM ELEMENTS ---- */
         .form-card{
@@ -141,42 +122,25 @@
             font-size:1.05rem;font-weight:700;margin-bottom:14px;
             display:flex;align-items:center;gap:8px;
         }
-        .form-title .icon{
-            width:32px;height:32px;border-radius:10px;
-            display:flex;align-items:center;justify-content:center;
-            font-size:.95rem;
-        }
         .form-label{color:var(--text-sec);font-size:.82rem;margin:12px 0 6px;font-weight:500}
         .form-input{
             width:100%;padding:13px 16px;
             background:var(--input);border:1px solid var(--border);
             color:var(--white);border-radius:var(--radius-sm);
             font-size:1rem;font-family:inherit;outline:none;
-            transition:.2s;
         }
-        .form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
         .form-select{
             width:100%;padding:13px 16px;
             background:var(--input);border:1px solid var(--border);
             color:var(--white);border-radius:var(--radius-sm);
             font-size:1rem;font-family:inherit;outline:none;
-            appearance:none;-webkit-appearance:none;
-            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
-            background-repeat:no-repeat;background-position:right 14px center;
-            cursor:pointer;
         }
-        .form-select:focus{border-color:var(--accent)}
         .form-btn{
             width:100%;padding:14px;border:none;border-radius:var(--radius-btn);
             font-size:1rem;font-weight:700;cursor:pointer;
-            font-family:inherit;transition:.15s;margin-top:14px;
-            box-shadow:0 4px 0 rgba(0,0,0,.25);
+            transition:.15s;margin-top:14px;
         }
-        .form-btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
         .form-btn.primary{background:var(--accent);color:var(--white)}
-        .form-btn.gold{background:var(--gold);color:#1a1a2e}
-        .form-btn.teal{background:var(--teal);color:var(--white)}
-
         .form-row{display:flex;gap:10px;align-items:flex-end}
         .form-row > *{flex:1}
 
@@ -185,132 +149,42 @@
             background:var(--input);border-radius:var(--radius-sm);
             padding:16px;margin-top:14px;
             border-left:4px solid var(--accent);
-            min-height:50px;
+            display:none;
         }
-        .result-box .result-label{font-size:.78rem;color:var(--text-dim);margin-bottom:6px;font-weight:500}
-        .result-box .result-val{font-size:1.5rem;font-weight:700;color:var(--success);line-height:1.3}
-        .result-box .result-detail{font-size:.9rem;color:var(--text-sec);margin-top:6px;line-height:1.5}
-        .result-box.gold-border{border-left-color:var(--gold)}
-        .result-box.teal-border{border-left-color:var(--teal)}
-        .result-box.rose-border{border-left-color:var(--rose)}
-
-        /* ---- UNIT CONVERTER PILLS ---- */
-        .unit-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-        .unit-pill{
-            padding:8px 14px;border-radius:20px;
-            background:var(--card-alt);border:1px solid var(--border);
-            color:var(--text-sec);font-size:.8rem;font-weight:600;
-            cursor:pointer;transition:.15s;font-family:inherit;
-        }
-        .unit-pill.active{background:var(--accent-dim);color:var(--white);border-color:var(--accent)}
-
-        /* ---- FABRIC MASTER TABLE ---- */
-        .fabric-table{
-            width:100%;border-collapse:collapse;margin-top:14px;
-            font-size:.82rem;
-        }
-        .fabric-table th{
-            background:var(--card-alt);color:var(--gold);
-            padding:10px 8px;text-align:left;font-weight:600;
-            border-bottom:2px solid var(--border);
-            position:sticky;top:0;
-        }
-        .fabric-table td{
-            padding:10px 8px;border-bottom:1px solid rgba(37,51,82,.5);
-            color:var(--text-sec);
-        }
-        .fabric-table tr:hover td{background:rgba(59,130,246,.06)}
-
-        .search-box{
-            position:relative;margin-bottom:14px;
-        }
-        .search-box input{
-            width:100%;padding:12px 16px 12px 40px;
-            background:var(--input);border:1px solid var(--border);
-            color:var(--white);border-radius:var(--radius-sm);
-            font-size:.95rem;font-family:inherit;outline:none;
-        }
-        .search-box input:focus{border-color:var(--accent)}
-        .search-box .search-icon{
-            position:absolute;left:14px;top:50%;transform:translateY(-50%);
-            color:var(--text-dim);font-size:.9rem;
-        }
-
-        /* ---- SCROLLBAR ---- */
-        ::-webkit-scrollbar{width:4px}
-        ::-webkit-scrollbar-track{background:transparent}
-        ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-
-        /* ---- RESPONSIVE ---- */
-        @media(max-width:380px){
-            .calc-btn{padding:13px 0;font-size:1.1rem}
-            .calc-result{font-size:2.2rem}
-            .brand{font-size:1.3rem}
-        }
+        .result-val{font-size:1.5rem;font-weight:700;color:var(--success)}
+        .result-detail{font-size:.9rem;color:var(--text-sec);margin-top:6px}
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
     <div class="brand">KEY FABRICS <span>Tools</span></div>
     <div class="tagline">Smart Business Calculator & Utilities</div>
 </header>
 
-<!-- MAIN CONTENT -->
 <div class="main">
-
-    <!-- ========== CALCULATOR PAGE ========== -->
     <div class="page active" id="page-calc">
         <div class="calc-display">
             <div class="calc-expr" id="calcExpr">0</div>
             <div class="calc-result" id="calcResult">0</div>
         </div>
-
-        <div class="sci-toggle">
-            <button class="basic-btn" id="basicToggle" onclick="setCalcMode('basic')">Basic</button>
-            <button class="sci-btn" id="sciToggle" onclick="setCalcMode('sci')">Scientific</button>
-        </div>
-
-        <div class="sci-pad" id="sciPad" style="display:none">
-            <button class="calc-btn sci" data-v="sin(">sin</button>
-            <button class="calc-btn sci" data-v="cos(">cos</button>
-            <button class="calc-btn sci" data-v="tan(">tan</button>
-            <button class="calc-btn sci" data-v="log(">log</button>
-            <button class="calc-btn sci" data-v="ln(">ln</button>
-            <button class="calc-btn sci" data-v="sqrt(">&#8730;</button>
-            <button class="calc-btn sci" data-v="cbrt(">&#8731;</button>
-            <button class="calc-btn sci" data-v="^">x^y</button>
-            <button class="calc-btn sci" data-v="!">n!</button>
-            <button class="calc-btn sci" data-v="pi">&#960;</button>
-            <button class="calc-btn sci" data-v="e">e</button>
-            <button class="calc-btn sci" data-v="abs(">|x|</button>
-            <button class="calc-btn sci" data-v="(">(</button>
-            <button class="calc-btn sci" data-v=")">)</button>
-            <button class="calc-btn sci" data-v="%">%</button>
-        </div>
-
         <div class="calc-grid" id="calcGrid">
             <button class="calc-btn ac" data-v="AC">AC</button>
             <button class="calc-btn fn" data-v="⌫">&#9003;</button>
             <button class="calc-btn fn" data-v="%">%</button>
             <button class="calc-btn op" data-v="/">&#247;</button>
-
             <button class="calc-btn" data-v="7">7</button>
             <button class="calc-btn" data-v="8">8</button>
             <button class="calc-btn" data-v="9">9</button>
             <button class="calc-btn op" data-v="*">&#215;</button>
-
             <button class="calc-btn" data-v="4">4</button>
             <button class="calc-btn" data-v="5">5</button>
             <button class="calc-btn" data-v="6">6</button>
             <button class="calc-btn op" data-v="-">&#8722;</button>
-
             <button class="calc-btn" data-v="1">1</button>
             <button class="calc-btn" data-v="2">2</button>
             <button class="calc-btn" data-v="3">3</button>
             <button class="calc-btn op" data-v="+">+</button>
-
             <button class="calc-btn" data-v="00">00</button>
             <button class="calc-btn" data-v="0">0</button>
             <button class="calc-btn" data-v=".">.</button>
@@ -318,533 +192,89 @@
         </div>
     </div>
 
-    <!-- ========== UNIT CONVERTER PAGE ========== -->
-    <div class="page" id="page-convert">
-        <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:var(--accent-glow);color:var(--accent)">&#8644;</div>
-                Unit Converter
-            </div>
-
-            <div class="unit-pills" id="unitCatPills">
-                <button class="unit-pill active" data-cat="length">Length</button>
-                <button class="unit-pill" data-cat="mass">Weight</button>
-                <button class="unit-pill" data-cat="fabric">Fabric</button>
-                <button class="unit-pill" data-cat="temperature">Temp</button>
-            </div>
-
-            <div class="form-label">Value</div>
-            <input class="form-input" type="number" id="convValue" value="1" step="any">
-
-            <div class="form-row" style="margin-top:12px">
-                <div>
-                    <div class="form-label">From</div>
-                    <select class="form-select" id="convFrom"></select>
-                </div>
-                <div style="flex:0;padding-bottom:6px;color:var(--accent);font-size:1.2rem;align-self:flex-end">&#10132;</div>
-                <div>
-                    <div class="form-label">To</div>
-                    <select class="form-select" id="convTo"></select>
-                </div>
-            </div>
-
-            <button class="form-btn primary" onclick="doConvert()">Convert</button>
-
-            <div class="result-box" id="convResult" style="display:none">
-                <div class="result-label">Result</div>
-                <div class="result-val" id="convResVal"></div>
-                <div class="result-detail" id="convResDetail"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== FOAM DENSITY PAGE ========== -->
     <div class="page" id="page-foam">
         <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:rgba(245,158,11,.2);color:var(--gold)">&#9679;</div>
-                Foam Density Calculator
+            <div class="form-title">Foam Comparison</div>
+            <div class="form-row">
+                <div><label class="form-label">Length (In)</label><input type="number" id="fL" class="form-input" value="72"></div>
+                <div><label class="form-label">Width (In)</label><input type="number" id="fW" class="form-input" value="36"></div>
             </div>
-
-            <div class="form-label">Foam Weight (grams)</div>
-            <input class="form-input" type="number" id="foamWeight" value="" placeholder="e.g. 500" step="any">
-
-            <div class="form-label">Length (cm)</div>
-            <input class="form-input" type="number" id="foamLength" value="" placeholder="e.g. 100" step="any">
-
-            <div class="form-label">Width (cm)</div>
-            <input class="form-input" type="number" id="foamWidth" value="" placeholder="e.g. 50" step="any">
-
-            <div class="form-label">Thickness (cm)</div>
-            <input class="form-input" type="number" id="foamThick" value="" placeholder="e.g. 5" step="any">
-
-            <button class="form-btn gold" onclick="calcFoamDensity()">Calculate Density</button>
-
-            <div class="result-box gold-border" id="foamResult" style="display:none">
-                <div class="result-label">Foam Density</div>
-                <div class="result-val" id="foamResVal"></div>
-                <div class="result-detail" id="foamResDetail"></div>
+            <div class="form-label">Density (D)</div>
+            <input type="number" id="fD" class="form-input" value="32">
+            
+            <div class="form-label">Local Rate</div>
+            <div class="form-row">
+                <input type="number" id="rL" class="form-input" placeholder="Rate">
+                <select id="uL" class="form-select"><option value="kg">KG</option><option value="mm">MM</option></select>
             </div>
-        </div>
-
-        <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:rgba(20,184,166,.2);color:var(--teal)">&#9670;</div>
-                Quick Density Reference
+            
+            <div class="form-label">Branded Rate</div>
+            <div class="form-row">
+                <input type="number" id="rB" class="form-input" placeholder="Rate">
+                <select id="uB" class="form-select"><option value="mm">MM</option><option value="kg">KG</option></select>
             </div>
-            <div style="font-size:.85rem;color:var(--text-sec);line-height:1.8">
-                <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(37,51,82,.4)">
-                    <span>Soft Foam (Mattress)</span><span style="color:var(--teal)">16 - 24 kg/m&#179;</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(37,51,82,.4)">
-                    <span>Medium Foam (Cushion)</span><span style="color:var(--gold)">24 - 35 kg/m&#179;</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(37,51,82,.4)">
-                    <span>Firm Foam (Sofa)</span><span style="color:var(--accent)">35 - 50 kg/m&#179;</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(37,51,82,.4)">
-                    <span>High Density (Auto)</span><span style="color:var(--rose)">50 - 80 kg/m&#179;</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:6px 0">
-                    <span>Rebonded Foam</span><span style="color:var(--success)">80 - 150 kg/m&#179;</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== FABRIC MASTER PAGE ========== -->
-    <div class="page" id="page-fabric">
-        <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:rgba(244,63,94,.2);color:var(--rose)">&#9733;</div>
-                Fabric Master
-            </div>
-
-            <div class="search-box">
-                <span class="search-icon">&#128269;</span>
-                <input type="text" id="fabricSearch" placeholder="Search fabric..." oninput="filterFabrics()">
-            </div>
-
-            <div style="overflow-x:auto;border-radius:var(--radius-sm);border:1px solid var(--border)">
-                <table class="fabric-table" id="fabricTable">
-                    <thead>
-                        <tr>
-                            <th>Fabric</th>
-                            <th>GSM</th>
-                            <th>Width</th>
-                            <th>Use</th>
-                        </tr>
-                    </thead>
-                    <tbody id="fabricBody"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:var(--accent-glow);color:var(--accent)">&#9998;</div>
-                GSM Calculator
-            </div>
-
-            <div class="form-label">Fabric Weight (grams)</div>
-            <input class="form-input" type="number" id="gsmWeight" placeholder="e.g. 25" step="any">
-
-            <div class="form-row" style="margin-top:0">
-                <div>
-                    <div class="form-label">Length (cm)</div>
-                    <input class="form-input" type="number" id="gsmLength" placeholder="e.g. 10" step="any">
-                </div>
-                <div>
-                    <div class="form-label">Width (cm)</div>
-                    <input class="form-input" type="number" id="gsmWidth" placeholder="e.g. 10" step="any">
-                </div>
-            </div>
-
-            <button class="form-btn teal" onclick="calcGSM()">Calculate GSM</button>
-
-            <div class="result-box teal-border" id="gsmResult" style="display:none">
-                <div class="result-label">GSM (Grams per Square Meter)</div>
-                <div class="result-val" id="gsmResVal"></div>
-                <div class="result-detail" id="gsmResDetail"></div>
-            </div>
-        </div>
-
-        <div class="form-card">
-            <div class="form-title">
-                <div class="icon" style="background:rgba(245,158,11,.2);color:var(--gold)">&#9878;</div>
-                Fabric Requirement
-            </div>
-
-            <div class="form-label">Item to make</div>
-            <select class="form-select" id="fabricItem">
-                <option value="sofa_3seat">3-Seater Sofa Cover</option>
-                <option value="sofa_2seat">2-Seater Sofa Cover</option>
-                <option value="chair">Chair Cover</option>
-                <option value="cushion">Cushion Cover (18x18)</option>
-                <option value="curtain">Curtain (per window)</option>
-                <option value="bedsheet_single">Bedsheet Single</option>
-                <option value="bedsheet_double">Bedsheet Double</option>
-                <option value="pillow">Pillow Cover</option>
-            </select>
-
-            <div class="form-label">Fabric Width (inches)</div>
-            <select class="form-select" id="fabricWidth">
-                <option value="44">44 inches</option>
-                <option value="54" selected>54 inches</option>
-                <option value="60">60 inches</option>
-                <option value="72">72 inches</option>
-                <option value="90">90 inches</option>
-                <option value="108">108 inches</option>
-            </select>
-
-            <div class="form-label">Quantity</div>
-            <input class="form-input" type="number" id="fabricQty" value="1" min="1">
-
-            <button class="form-btn primary" onclick="calcFabricReq()">Calculate Requirement</button>
-
-            <div class="result-box" id="fabricReqResult" style="display:none">
-                <div class="result-label">Fabric Required</div>
-                <div class="result-val" id="fabricReqVal"></div>
-                <div class="result-detail" id="fabricReqDetail"></div>
+            
+            <button class="form-btn primary" onclick="doCompare()">Compare Now</button>
+            
+            <div class="result-box" id="fRes">
+                <div class="result-val" id="fVal"></div>
+                <div class="result-detail" id="fDet"></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- BOTTOM TAB BAR -->
 <nav class="tab-bar">
-    <button class="tab-item active" data-page="calc">
-        <div class="tab-icon">&#127386;</div>
-        <div class="tab-label">Calculator</div>
-    </button>
-    <button class="tab-item" data-page="convert">
-        <div class="tab-icon">&#8644;</div>
-        <div class="tab-label">Convert</div>
-    </button>
-    <button class="tab-item" data-page="foam">
-        <div class="tab-icon">&#9679;</div>
-        <div class="tab-label">Foam</div>
-    </button>
-    <button class="tab-item" data-page="fabric">
-        <div class="tab-icon">&#9733;</div>
-        <div class="tab-label">Fabric</div>
-    </button>
+    <button class="tab-item active" onclick="nav('calc', this)"><div class="tab-label">Calculator</div></button>
+    <button class="tab-item" onclick="nav('foam', this)"><div class="tab-label">Foam Compare</div></button>
 </nav>
 
 <script>
-(function(){
-    // ============ TAB NAVIGATION ============
-    const tabs = document.querySelectorAll('.tab-item');
-    const pages = document.querySelectorAll('.page');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const p = tab.dataset.page;
-            tabs.forEach(t => t.classList.remove('active'));
-            pages.forEach(pg => pg.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById('page-' + p).classList.add('active');
-        });
-    });
-
-    // ============ CALCULATOR ============
-    const exprEl = document.getElementById('calcExpr');
-    const resEl = document.getElementById('calcResult');
-    let expr = '';
-    let lastCalc = false;
-
-    math.import({
-        ln: function(x){ return Math.log(x); }
-    }, {override:true});
-
-    function updDisp(){
-        exprEl.textContent = expr || '0';
+    // Navigation Logic
+    function nav(p, btn) {
+        document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active'));
+        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        document.getElementById('page-' + p).classList.add('active');
+        btn.classList.add('active');
     }
 
-    document.querySelectorAll('#calcGrid .calc-btn, #sciPad .calc-btn').forEach(btn => {
+    // Calculator Logic
+    let expr = '';
+    const resEl = document.getElementById('calcResult');
+    const exprEl = document.getElementById('calcExpr');
+
+    document.querySelectorAll('.calc-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const v = btn.dataset.v;
-            if(v === 'AC'){ expr=''; resEl.textContent='0'; updDisp(); lastCalc=false; return; }
-            if(v === '⌫'){ expr = expr.slice(0,-1); updDisp(); return; }
-            if(v === '='){
-                if(!expr.trim()) return;
-                let ev = expr;
-                ev = ev.replace(/(\d+\.?\d*|pi|e|\))\!/g, 'factorial($1)');
-                ev = ev.replace(/(\d+\.?\d*)\%/g, '($1/100)');
-                try{
-                    let r = math.evaluate(ev);
-                    let rs = String(r);
-                    if(typeof r === 'number' && !Number.isInteger(r)){
-                        rs = r.toFixed(10).replace(/\.?0+$/, '');
-                    }
-                    resEl.textContent = rs;
-                    lastCalc = true;
-                }catch(e){
-                    resEl.textContent = 'Error';
-                }
-                return;
-            }
-            if(lastCalc && !isNaN(Number(v))){
-                expr = '';
-                lastCalc = false;
-            }
-            lastCalc = false;
-            expr += v;
-            updDisp();
+            if(v === 'AC') { expr = ''; resEl.innerText = '0'; }
+            else if(v === '⌫') { expr = expr.slice(0, -1); }
+            else if(v === '=') {
+                try { resEl.innerText = math.evaluate(expr.replace('×','*').replace('÷','/')); }
+                catch(e) { resEl.innerText = 'Error'; }
+            } else { expr += v; }
+            exprEl.innerText = expr || '0';
         });
     });
 
-    window.setCalcMode = function(mode){
-        const sciPad = document.getElementById('sciPad');
-        const basicBtn = document.getElementById('basicToggle');
-        const sciBtn = document.getElementById('sciToggle');
-        if(mode === 'sci'){
-            sciPad.style.display = 'grid';
-            basicBtn.className = 'basic-btn inactive';
-            sciBtn.className = 'sci-btn active-mode';
-        } else {
-            sciPad.style.display = 'none';
-            basicBtn.className = 'basic-btn';
-            sciBtn.className = 'sci-btn';
-        }
-    };
+    // Foam Logic
+    function doCompare() {
+        let l = parseFloat(document.getElementById('fL').value) * 25.4;
+        let w = parseFloat(document.getElementById('fW').value) * 25.4;
+        let d = parseFloat(document.getElementById('fD').value);
+        let weight1mm = (l * w * 1 * d) / 1000000000;
+        
+        let rateL = parseFloat(document.getElementById('rL').value);
+        let rateB = parseFloat(document.getElementById('rB').value);
+        let unitL = document.getElementById('uL').value;
+        let unitB = document.getElementById('uB').value;
 
-    // ============ UNIT CONVERTER ============
-    const unitData = {
-        length: {
-            units: ['Meter','CM','MM','KM','Inch','Feet','Yard','Mile'],
-            factors: {Meter:1,CM:0.01,MM:0.001,KM:1000,Inch:0.0254,Feet:0.3048,Yard:0.9144,Mile:1609.344}
-        },
-        mass: {
-            units: ['KG','Gram','MG','Pound','Ounce','Ton','Quintal'],
-            factors: {KG:1,Gram:0.001,MG:0.000001,Pound:0.453592,Ounce:0.0283495,Ton:1000,Quintal:100}
-        },
-        fabric: {
-            units: ['Meter','Yard','Feet','Inch','CM'],
-            factors: {Meter:1,Yard:0.9144,Feet:0.3048,Inch:0.0254,CM:0.01}
-        },
-        temperature: {
-            units: ['Celsius','Fahrenheit','Kelvin'],
-            factors: null
-        }
-    };
+        let finalL = (unitL === 'kg') ? rateL * weight1mm : rateL;
+        let finalB = (unitB === 'mm') ? rateB : rateB * weight1mm;
 
-    let curCat = 'length';
-
-    function populateUnits(){
-        const from = document.getElementById('convFrom');
-        const to = document.getElementById('convTo');
-        const units = unitData[curCat].units;
-        from.innerHTML = units.map((u,i) => `<option value="${u}" ${i===0?'selected':''}>${u}</option>`).join('');
-        to.innerHTML = units.map((u,i) => `<option value="${u}" ${i===1?'selected':''}>${u}</option>`).join('');
+        document.getElementById('fRes').style.display = 'block';
+        document.getElementById('fVal').innerText = "Difference: ₹" + Math.abs(finalL - finalB).toFixed(2);
+        document.getElementById('fDet').innerHTML = "Local (MM): ₹" + finalL.toFixed(2) + "<br>Brand (MM): ₹" + finalB.toFixed(2);
     }
-    populateUnits();
-
-    document.querySelectorAll('#unitCatPills .unit-pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-            document.querySelectorAll('#unitCatPills .unit-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
-            curCat = pill.dataset.cat;
-            populateUnits();
-            document.getElementById('convResult').style.display = 'none';
-        });
-    });
-
-    window.doConvert = function(){
-        const val = parseFloat(document.getElementById('convValue').value);
-        if(isNaN(val)) return;
-        const from = document.getElementById('convFrom').value;
-        const to = document.getElementById('convTo').value;
-        let result;
-
-        if(curCat === 'temperature'){
-            let c;
-            if(from === 'Celsius') c = val;
-            else if(from === 'Fahrenheit') c = (val - 32) * 5/9;
-            else c = val - 273.15;
-
-            if(to === 'Celsius') result = c;
-            else if(to === 'Fahrenheit') result = c * 9/5 + 32;
-            else result = c + 273.15;
-        } else {
-            const factors = unitData[curCat].factors;
-            const base = val * factors[from];
-            result = base / factors[to];
-        }
-
-        const fmt = Number.isInteger(result) ? result.toString() : result.toFixed(6).replace(/\.?0+$/,'');
-        document.getElementById('convResVal').textContent = fmt + ' ' + to;
-        document.getElementById('convResDetail').textContent = val + ' ' + from + ' = ' + fmt + ' ' + to;
-        document.getElementById('convResult').style.display = 'block';
-    };
-
-    // ============ FOAM DENSITY ============
-    window.calcFoamDensity = function(){
-        const w = parseFloat(document.getElementById('foamWeight').value);
-        const l = parseFloat(document.getElementById('foamLength').value);
-        const wd = parseFloat(document.getElementById('foamWidth').value);
-        const t = parseFloat(document.getElementById('foamThick').value);
-        if([w,l,wd,t].some(isNaN) || l<=0 || wd<=0 || t<=0){
-            document.getElementById('foamResVal').textContent = 'Invalid input';
-            document.getElementById('foamResDetail').textContent = 'Please fill all fields with valid numbers.';
-            document.getElementById('foamResult').style.display = 'block';
-            return;
-        }
-        const volCm3 = l * wd * t;
-        const volM3 = volCm3 / 1000000;
-        const densityKg = (w / 1000) / volM3;
-        const fmt = densityKg.toFixed(2);
-
-        let grade = '';
-        if(densityKg < 16) grade = 'Very Soft (Low quality)';
-        else if(densityKg < 24) grade = 'Soft - Mattress Grade';
-        else if(densityKg < 35) grade = 'Medium - Cushion Grade';
-        else if(densityKg < 50) grade = 'Firm - Sofa Grade';
-        else if(densityKg < 80) grade = 'High Density - Auto Grade';
-        else grade = 'Rebonded / Extra High Density';
-
-        document.getElementById('foamResVal').textContent = fmt + ' kg/m\u00B3';
-        document.getElementById('foamResDetail').innerHTML =
-            'Volume: ' + volCm3.toFixed(1) + ' cm\u00B3 (' + volM3.toFixed(6) + ' m\u00B3)<br>' +
-            'Weight: ' + w + ' g (' + (w/1000).toFixed(3) + ' kg)<br>' +
-            '<strong style="color:var(--gold)">' + grade + '</strong>';
-        document.getElementById('foamResult').style.display = 'block';
-    };
-
-    // ============ FABRIC MASTER ============
-    const fabricData = [
-        {name:'Cotton',gsm:'100-200',width:'44-60"',use:'Shirts, Bedsheets'},
-        {name:'Polyester',gsm:'75-250',width:'44-60"',use:'Curtains, Lining'},
-        {name:'Silk',gsm:'30-120',width:'44-45"',use:'Saree, Dress'},
-        {name:'Linen',gsm:'150-300',width:'54-60"',use:'Kurta, Table Cloth'},
-        {name:'Denim',gsm:'200-400',width:'54-60"',use:'Jeans, Bags'},
-        {name:'Velvet',gsm:'250-400',width:'44-54"',use:'Sofa, Curtains'},
-        {name:'Chiffon',gsm:'30-70',width:'44-45"',use:'Dupatta, Saree'},
-        {name:'Canvas',gsm:'200-600',width:'54-72"',use:'Bags, Tents'},
-        {name:'Satin',gsm:'80-160',width:'44-54"',use:'Lining, Dress'},
-        {name:'Georgette',gsm:'40-100',width:'44-45"',use:'Saree, Scarf'},
-        {name:'Rexine/PVC',gsm:'300-600',width:'54"',use:'Sofa, Car Seat'},
-        {name:'Leatherette',gsm:'350-700',width:'54-60"',use:'Upholstery'},
-        {name:'Net/Tulle',gsm:'20-60',width:'44-54"',use:'Decoration'},
-        {name:'Fleece',gsm:'150-350',width:'58-60"',use:'Blanket, Jacket'},
-        {name:'Muslin',gsm:'50-100',width:'44-54"',use:'Baby Cloth, Drape'},
-        {name:'Twill',gsm:'150-350',width:'54-60"',use:'Uniform, Pant'},
-        {name:'Organza',gsm:'30-70',width:'44-45"',use:'Decoration, Saree'},
-        {name:'Poplin',gsm:'100-150',width:'44-58"',use:'Shirt, Dress'},
-        {name:'Khadi',gsm:'120-250',width:'36-44"',use:'Kurta, Traditional'},
-        {name:'Jute',gsm:'200-500',width:'40-50"',use:'Bags, Decor'},
-    ];
-
-    function renderFabrics(data){
-        document.getElementById('fabricBody').innerHTML = data.map(f =>
-            `<tr><td style="color:var(--text);font-weight:600">${f.name}</td><td>${f.gsm}</td><td>${f.width}</td><td>${f.use}</td></tr>`
-        ).join('');
-    }
-    renderFabrics(fabricData);
-
-    window.filterFabrics = function(){
-        const q = document.getElementById('fabricSearch').value.toLowerCase();
-        const filtered = fabricData.filter(f =>
-            f.name.toLowerCase().includes(q) || f.use.toLowerCase().includes(q)
-        );
-        renderFabrics(filtered);
-    };
-
-    // GSM Calculator
-    window.calcGSM = function(){
-        const w = parseFloat(document.getElementById('gsmWeight').value);
-        const l = parseFloat(document.getElementById('gsmLength').value);
-        const wd = parseFloat(document.getElementById('gsmWidth').value);
-        if([w,l,wd].some(isNaN) || l<=0 || wd<=0){
-            document.getElementById('gsmResVal').textContent = 'Invalid input';
-            document.getElementById('gsmResDetail').textContent = '';
-            document.getElementById('gsmResult').style.display = 'block';
-            return;
-        }
-        const areaM2 = (l/100) * (wd/100);
-        const gsm = w / areaM2;
-        const fmt = gsm.toFixed(1);
-
-        let cat = '';
-        if(gsm < 80) cat = 'Lightweight (Sheer/Voile)';
-        else if(gsm < 150) cat = 'Light-Medium (Shirt/Dress)';
-        else if(gsm < 250) cat = 'Medium (Kurta/Bedsheet)';
-        else if(gsm < 400) cat = 'Heavy (Denim/Canvas)';
-        else cat = 'Extra Heavy (Upholstery)';
-
-        document.getElementById('gsmResVal').textContent = fmt + ' GSM';
-        document.getElementById('gsmResDetail').innerHTML =
-            'Sample Area: ' + (l*wd).toFixed(1) + ' cm\u00B2 (' + areaM2.toFixed(6) + ' m\u00B2)<br>' +
-            '<strong style="color:var(--teal)">' + cat + '</strong>';
-        document.getElementById('gsmResult').style.display = 'block';
-    };
-
-    // Fabric Requirement Calculator
-    const fabricReqs = {
-        sofa_3seat: {name:'3-Seater Sofa Cover', meters:{44:14,54:12,60:10,72:9,90:7.5,108:6.5}},
-        sofa_2seat: {name:'2-Seater Sofa Cover', meters:{44:10,54:8.5,60:7.5,72:6.5,90:5.5,108:4.5}},
-        chair: {name:'Chair Cover', meters:{44:3.5,54:3,60:2.5,72:2,90:1.8,108:1.5}},
-        cushion: {name:'Cushion Cover (18x18)', meters:{44:0.55,54:0.5,60:0.5,72:0.5,90:0.5,108:0.5}},
-        curtain: {name:'Curtain (per window, 48x84)', meters:{44:5,54:4.5,60:4,72:3.5,90:2.8,108:2.5}},
-        bedsheet_single: {name:'Single Bedsheet', meters:{44:5.5,54:4.5,60:4,72:3.5,90:2.8,108:2.5}},
-        bedsheet_double: {name:'Double Bedsheet', meters:{44:8,54:6.5,60:6,72:5,90:4,108:3.5}},
-        pillow: {name:'Pillow Cover', meters:{44:0.6,54:0.55,60:0.5,72:0.5,90:0.5,108:0.5}},
-    };
-
-    window.calcFabricReq = function(){
-        const item = document.getElementById('fabricItem').value;
-        const width = document.getElementById('fabricWidth').value;
-        const qty = parseInt(document.getElementById('fabricQty').value) || 1;
-        const data = fabricReqs[item];
-        if(!data) return;
-        const perPiece = data.meters[width] || 3;
-        const total = perPiece * qty;
-        const totalYards = (total / 0.9144).toFixed(2);
-
-        document.getElementById('fabricReqVal').textContent = total.toFixed(2) + ' meters';
-        document.getElementById('fabricReqDetail').innerHTML =
-            'Item: ' + data.name + '<br>' +
-            'Fabric Width: ' + width + '"<br>' +
-            'Per piece: ' + perPiece + ' m<br>' +
-            'Quantity: ' + qty + '<br>' +
-            'Total: ' + total.toFixed(2) + ' m (' + totalYards + ' yards)';
-        document.getElementById('fabricReqResult').style.display = 'block';
-    };
-
-    // Keyboard support for calculator
-    document.addEventListener('keydown', function(e){
-        const activePage = document.querySelector('.page.active');
-        if(!activePage || activePage.id !== 'page-calc') return;
-        const key = e.key;
-        if('0123456789'.includes(key) || '+-*/.%^()'.includes(key)){
-            e.preventDefault();
-            expr += key;
-            updDisp();
-        } else if(key === 'Enter'){
-            e.preventDefault();
-            document.querySelector('.calc-btn.eq').click();
-        } else if(key === 'Backspace'){
-            e.preventDefault();
-            expr = expr.slice(0,-1);
-            updDisp();
-        } else if(key === 'Escape'){
-            e.preventDefault();
-            expr = '';
-            resEl.textContent = '0';
-            updDisp();
-        }
-    });
-})();
-
-// ============ SERVICE WORKER REGISTRATION (PWA / OFFLINE) ============
-if('serviceWorker' in navigator){
-    window.addEventListener('load', function(){
-        navigator.serviceWorker.register('/sw.js').then(function(reg){
-            console.log('SW registered, scope:', reg.scope);
-        }).catch(function(err){
-            console.log('SW registration failed:', err);
-        });
-    });
-}
 </script>
 </body>
 </html>
