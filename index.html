@@ -1,1 +1,216 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KEY FABRICS - Smart Business Tools</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KEY FABRICS">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.12.0/math.min.js"></script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+        :root{
+            --bg:#0a0e1a;--surface:#111827;--card:#151d2e;--card-alt:#1a2540;
+            --input:#0c1220;--border:#253352;--border-light:#2e4068;
+            --accent:#3b82f6;--accent-glow:rgba(59,130,246,.35);--accent-dim:#1e3a8a;
+            --gold:#f59e0b;--gold-dim:#92400e;
+            --teal:#14b8a6;--teal-dim:#0f766e;
+            --rose:#f43f5e;--rose-dim:#9f1239;
+            --text:#e2e8f0;--text-sec:#94a3b8;--text-dim:#64748b;
+            --white:#ffffff;--shadow:rgba(0,0,0,.5);
+            --success:#22c55e;--error:#ef4444;
+            --radius:18px;--radius-sm:12px;--radius-btn:14px;
+        }
+        html{font-size:16px}
+        body{
+            background:var(--bg);min-height:100vh;min-height:100dvh;
+            font-family:'Inter',system-ui,sans-serif;color:var(--text);
+            display:flex;flex-direction:column;align-items:center;
+            padding:0 0 80px 0;overflow-x:hidden;
+        }
+
+        .header{
+            width:100%;padding:18px 20px 14px;
+            background:linear-gradient(180deg,rgba(17,24,39,.98) 0%,rgba(10,14,26,.95) 100%);
+            text-align:center;position:sticky;top:0;z-index:100;
+            border-bottom:1px solid var(--border);
+            backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        }
+        .brand{font-size:1.6rem;font-weight:800;letter-spacing:2px;color:var(--gold)}
+        .brand span{color:var(--text);font-weight:500;font-size:1rem;letter-spacing:0}
+        
+        .main{width:100%;max-width:480px;padding:16px}
+        .page{display:none}
+        .page.active{display:block;animation:fadeUp .25s ease}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+        /* Calculator Styles */
+        .calc-display{
+            background:var(--input);border-radius:var(--radius);
+            padding:20px 18px;margin-bottom:14px;border:1px solid var(--border);
+            min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;
+        }
+        .calc-expr{font-size:1.05rem;color:var(--text-sec);text-align:right;min-height:24px;}
+        .calc-result{font-size:2.6rem;font-weight:700;color:var(--text);text-align:right;}
+        .calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+        .calc-btn{
+            background:var(--card);border:1px solid var(--border);
+            color:var(--text);font-size:1.25rem;font-weight:600;
+            padding:16px 0;border-radius:var(--radius-btn);cursor:pointer;
+        }
+        .btn-op{background:var(--card-alt);color:var(--accent)}
+        .btn-eq{background:var(--accent);color:var(--white)}
+
+        /* Foam Styles */
+        .foam-card{background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:15px;}
+        .input-row{margin-bottom:15px;}
+        .input-row label{display:block;font-size:0.8rem;color:var(--text-sec);margin-bottom:5px;}
+        .input-flex{display:flex;gap:10px;}
+        input, select{
+            background:var(--input);border:1px solid var(--border);color:var(--text);
+            padding:12px;border-radius:var(--radius-sm);width:100%;outline:none;
+        }
+        .compare-btn{
+            background:var(--gold);color:var(--bg);width:100%;padding:15px;
+            border-radius:var(--radius-btn);font-weight:700;border:none;cursor:pointer;
+        }
+        .res-box{margin-top:20px;padding:15px;background:var(--surface);border-radius:var(--radius-sm);display:none;}
+
+        /* Tab Bar */
+        .tab-bar{
+            position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;
+            background:rgba(17,24,39,.96);border-top:1px solid var(--border);
+            padding:6px 0 env(safe-area-inset-bottom,8px);z-index:200;
+        }
+        .tab-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;color:var(--text-dim);background:none;border:none;flex:1;}
+        .tab-item.active{color:var(--accent)}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="brand">KEY<span>FABRICS</span></div>
+    </div>
+
+    <div class="main">
+        <div id="page-calc" class="page active">
+            <div class="calc-display">
+                <div id="expr" class="calc-expr"></div>
+                <div id="res" class="calc-result">0</div>
+            </div>
+            <div class="calc-grid">
+                <button class="calc-btn btn-op" onclick="clearCalc()">C</button>
+                <button class="calc-btn btn-op" onclick="backspace()">⌫</button>
+                <button class="calc-btn btn-op" onclick="append('/')">÷</button>
+                <button class="calc-btn btn-op" onclick="append('*')">×</button>
+                <button class="calc-btn" onclick="append('7')">7</button>
+                <button class="calc-btn" onclick="append('8')">8</button>
+                <button class="calc-btn" onclick="append('9')">9</button>
+                <button class="calc-btn btn-op" onclick="append('-')">-</button>
+                <button class="calc-btn" onclick="append('4')">4</button>
+                <button class="calc-btn" onclick="append('5')">5</button>
+                <button class="calc-btn" onclick="append('6')">6</button>
+                <button class="calc-btn btn-op" onclick="append('+')">+</button>
+                <button class="calc-btn" onclick="append('1')">1</button>
+                <button class="calc-btn" onclick="append('2')">2</button>
+                <button class="calc-btn" onclick="append('3')">3</button>
+                <button class="calc-btn btn-eq" style="grid-row: span 2;" onclick="calculate()">=</button>
+                <button class="calc-btn" style="grid-column: span 2;" onclick="append('0')">0</button>
+                <button class="calc-btn" onclick="append('.')">.</button>
+            </div>
+        </div>
+
+        <div id="page-foam" class="page">
+            <div class="foam-card">
+                <div class="input-row">
+                    <label>Sheet Size (Inches)</label>
+                    <div class="input-flex">
+                        <input type="number" id="L" value="72">
+                        <input type="number" id="W" value="36">
+                    </div>
+                </div>
+                <div class="input-row"><label>Density (D)</label><input type="number" id="D" value="32"></div>
+                <div class="input-row">
+                    <label>Local Foam</label>
+                    <div class="input-flex">
+                        <input type="number" id="rL" placeholder="Rate">
+                        <select id="uL"><option value="kg">KG</option><option value="mm">MM</option></select>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <label>Branded Foam</label>
+                    <div class="input-flex">
+                        <input type="number" id="rB" placeholder="Rate">
+                        <select id="uB"><option value="mm">MM</option><option value="kg">KG</option></select>
+                    </div>
+                </div>
+                <button class="compare-btn" onclick="compareFoam()">Compare Rates</button>
+            </div>
+            <div id="foamRes" class="res-box">
+                <div id="foamText"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-item active" onclick="switchPage('calc', this)">
+            <div class="tab-label">Calculator</div>
+        </button>
+        <button class="tab-item" onclick="switchPage('foam', this)">
+            <div class="tab-label">Foam Compare</div>
+        </button>
+    </div>
+
+    <script>
+        // Tab Switcher
+        function switchPage(pageId, el) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            el.classList.add('active');
+        }
+
+        // Calculator Logic
+        let currentExpr = "";
+        function append(val) { currentExpr += val; document.getElementById('expr').innerText = currentExpr; }
+        function clearCalc() { currentExpr = ""; document.getElementById('expr').innerText = ""; document.getElementById('res').innerText = "0"; }
+        function backspace() { currentExpr = currentExpr.slice(0, -1); document.getElementById('expr').innerText = currentExpr; }
+        function calculate() {
+            try {
+                let result = math.evaluate(currentExpr);
+                document.getElementById('res').innerText = result;
+            } catch (e) { document.getElementById('res').innerText = "Error"; }
+        }
+
+        // Foam Comparison Logic
+        function compareFoam() {
+            let l = parseFloat(document.getElementById('L').value) * 25.4;
+            let w = parseFloat(document.getElementById('W').value) * 25.4;
+            let d = parseFloat(document.getElementById('D').value);
+            let rl = parseFloat(document.getElementById('rL').value);
+            let rb = parseFloat(document.getElementById('rB').value);
+            
+            if(!rl || !rb) return alert("Sahi rate bhariye!");
+
+            let weight1mm = (l * w * 1 * d) / 1000000000;
+            let lMM, bMM;
+
+            lMM = (document.getElementById('uL').value === 'kg') ? rl * weight1mm : rl;
+            bMM = (document.getElementById('uB').value === 'mm') ? rb : rb * weight1mm;
+
+            document.getElementById('foamRes').style.display = 'block';
+            document.getElementById('foamText').innerHTML = `
+                <p>Local: ₹${lMM.toFixed(2)} / mm</p>
+                <p>Brand: ₹${bMM.toFixed(2)} / mm</p>
+                <p style="color:var(--gold); margin-top:10px;">Farq: ₹${Math.abs(lMM-bMM).toFixed(2)} per mm</p>
+            `;
+        }
+    </script>
+</body>
+</html>
 
