@@ -834,7 +834,135 @@
         }
     });
 })();
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Fabrics - Final Calculator</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 15px; background-color: #f0f2f5; }
+        .container { max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #1a73e8; margin-bottom: 20px; border-bottom: 2px solid #1a73e8; padding-bottom: 10px; }
+        .input-group { margin-bottom: 15px; }
+        label { font-size: 14px; font-weight: bold; color: #444; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .row { display: flex; gap: 10px; }
+        button { width: 100%; padding: 15px; background: #1a73e8; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .result-box { margin-top: 20px; padding: 15px; border-radius: 8px; background: #f8f9fa; border: 1px solid #dee2e6; display: none; }
+        .option-title { font-weight: bold; color: #1a73e8; border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 5px; margin-top: 15px; }
+        .res-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; }
+        .highlight { color: #d93025; font-weight: bold; }
+        .green { color: #1e8e3e; font-weight: bold; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h2>KEY FABRICS</h2>
+
+    <div class="input-group">
+        <label>Sheet Size (Inches)</label>
+        <div class="row">
+            <input type="number" id="L" value="72" placeholder="Length">
+            <input type="number" id="W" value="36" placeholder="Width">
+        </div>
+    </div>
+    <div class="input-group">
+        <label>Foam Density (D)</label>
+        <input type="number" id="density" value="32">
+    </div>
+
+    <hr>
+
+    <div class="input-group">
+        <label>Local Foam Rate</label>
+        <div class="row">
+            <input type="number" id="rateLocal" placeholder="Rate">
+            <select id="unitLocal" style="flex: 0.6;">
+                <option value="kg">per KG</option>
+                <option value="mm">per MM</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Branded Foam Rate</label>
+        <div class="row">
+            <input type="number" id="rateBrand" placeholder="Rate">
+            <select id="unitBrand" style="flex: 0.6;">
+                <option value="mm" selected>per MM</option>
+                <option value="kg">per KG</option>
+            </select>
+        </div>
+    </div>
+
+    <button onclick="calculateFinal()">Compare Rates</button>
+
+    <div id="results" class="result-box">
+        <div class="option-title">Option 1: MM Rate Comparison</div>
+        <div class="res-row"><span>Local (per MM):</span> <span id="opt1Local" class="green">-</span></div>
+        <div class="res-row"><span>Branded (per MM):</span> <span id="opt1Branded" class="highlight">-</span></div>
+
+        <div class="option-title">Option 2: KG Rate Comparison</div>
+        <div class="res-row"><span>Local (per KG):</span> <span id="opt2Local" class="green">-</span></div>
+        <div class="res-row) "><span>Branded (per KG):</span> <span id="opt2Branded" class="highlight">-</span></div>
+        
+        <div style="margin-top:15px; font-size:12px; color:#777; text-align:center;" id="weightInfo"></div>
+    </div>
+</div>
+
+<script>
+function calculateFinal() {
+    // Basic Inputs
+    let L_mm = parseFloat(document.getElementById('L').value) * 25.4;
+    let W_mm = parseFloat(document.getElementById('W').value) * 25.4;
+    let D = parseFloat(document.getElementById('density').value);
+    
+    let rLocal = parseFloat(document.getElementById('rateLocal').value);
+    let uLocal = document.getElementById('unitLocal').value;
+    
+    let rBrand = parseFloat(document.getElementById('rateBrand').value);
+    let uBrand = document.getElementById('unitBrand').value;
+
+    if(!rLocal || !rBrand) { alert("Please enter both rates!"); return; }
+
+    // 1mm thickness ki sheet ka weight (KG mein)
+    let weight1mm = (L_mm * W_mm * 1 * D) / 1000000000;
+
+    // Sabko standard (MM aur KG) mein convert karna
+    let localMM, localKG, brandMM, brandKG;
+
+    // Local Logic
+    if(uLocal === 'kg') {
+        localKG = rLocal;
+        localMM = rLocal * weight1mm;
+    } else {
+        localMM = rLocal;
+        localKG = rLocal / weight1mm;
+    }
+
+    // Brand Logic
+    if(uBrand === 'mm') {
+        brandMM = rBrand;
+        brandKG = rBrand / weight1mm;
+    } else {
+        brandKG = rBrand;
+        brandMM = rBrand * weight1mm;
+    }
+
+    // Display Results
+    document.getElementById('results').style.display = 'block';
+    
+    document.getElementById('opt1Local').innerText = "₹" + localMM.toFixed(2);
+    document.getElementById('opt1Branded').innerText = "₹" + brandMM.toFixed(2);
+    
+    document.getElementById('opt2Local').innerText = "₹" + localKG.toFixed(2);
+    document.getElementById('opt2Branded').innerText = "₹" + brandKG.toFixed(2);
+
+    document.getElementById('weightInfo').innerText = "Sheet Weight (1mm): " + weight1mm.toFixed(4) + " KG";
+}
+    
 // ============ SERVICE WORKER REGISTRATION (PWA / OFFLINE) ============
 if('serviceWorker' in navigator){
     window.addEventListener('load', function(){
