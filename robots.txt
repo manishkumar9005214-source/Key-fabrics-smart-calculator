@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aapka-username.github.io/repo-name/sitemap.xml
+Sitemap: https://fardipthakre.github.io/Key-fabrics-smart-calculator/sitemap.xml
